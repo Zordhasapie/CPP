@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <6.cpp>
 
 int main(int argc, char const *argv[])
 {
@@ -12,3 +13,4 @@ int main(int argc, char const *argv[])
         printf("%d la so le", n);
     return 0;
 }
+
