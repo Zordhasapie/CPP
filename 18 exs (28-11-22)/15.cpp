@@ -33,6 +33,7 @@ int indexOf(int x, int arr[], int n)
     {
         if (arr[i] == x)
             return i;
+        i++;
     }
     return -1;
 }
