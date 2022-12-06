@@ -23,34 +23,35 @@ void arrayOut(int a[], int n)
     {
         printf(" %d ", a[i]);
     }
-    printf("\n");
     return;
 }
 
-void sortA(int arr[], int n)
+int count_X(int x, int arr[], int n)
 {
-    int i = 0, swaper;
+    int i = 0, count = 0;
     while (i < n)
     {
-        while (arr[i] > arr[i + 1])
-        {
-            swaper = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = swaper;
-            if (i != 0)
-                i--;
-            // arrayOut(arr,n);
-            // Uncomment dòng 42 và chạy để thấy cách thuật toán sắp xếp hoạt động, đây là thuật toán "Bubble Sort"... hoặc tôi nhầm nó với thứ khác, hoặc nó chưa phải tối ưu
-        }
+        if (arr[i] == x)
+            count++;
         i++;
     }
+    return count;
 }
 
 int main(int argc, char const *argv[])
 {
-    int arr[MAX], n;
-    arrayMake(arr,n);
-    sortA(arr,n);
-    arrayOut(arr,n);
+    int arr[MAX], n, x;
+    arrayMake(arr, n);
+    printf("nhap vao X muon tim: ");
+    scanf("%d", &x);
+
+    int count = count_X(x, arr, n);
+    if (count != 0)
+        printf("co %d phan tu trong mang co gia tri la X(%d)", count, x);
+    else
+    {
+        printf("khong tim thay gia tri cua x(%d) trong mang, hien thi mang...", x);
+        arrayOut(arr, n);
+    }
     return 0;
 }

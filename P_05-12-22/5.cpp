@@ -27,30 +27,38 @@ void arrayOut(int a[], int n)
     return;
 }
 
-void sortA(int arr[], int n)
+int indexOf(int x, int arr[], int n)
 {
-    int i = 0, swaper;
+    int i = 0;
     while (i < n)
     {
-        while (arr[i] > arr[i + 1])
-        {
-            swaper = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = swaper;
-            if (i != 0)
-                i--;
-            // arrayOut(arr,n);
-            // Uncomment dòng 42 và chạy để thấy cách thuật toán sắp xếp hoạt động, đây là thuật toán "Bubble Sort"... hoặc tôi nhầm nó với thứ khác, hoặc nó chưa phải tối ưu
-        }
+        if (arr[i] == x)
+            return i;
         i++;
     }
+    return -1;
+}
+
+void remove_All_X(int x, int arr[], int n)
+{
+    while (indexOf(x, arr, n) != -1)
+    {
+        for (int i = indexOf(x, arr, n); i < n - 1; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+    }
+    return;
 }
 
 int main(int argc, char const *argv[])
 {
-    int arr[MAX], n;
-    arrayMake(arr,n);
-    sortA(arr,n);
-    arrayOut(arr,n);
+    int arr[MAX], n, x;
+    arrayMake(arr, n);
+    printf("nhap X can xoa: ");
+    scanf("%d", &x);
+    remove_All_X(x, arr, n);
+    printf("Mang sau khi xoa: \n");
+    arrayOut(arr, n);
     return 0;
 }

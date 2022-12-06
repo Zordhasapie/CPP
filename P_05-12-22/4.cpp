@@ -27,30 +27,37 @@ void arrayOut(int a[], int n)
     return;
 }
 
-void sortA(int arr[], int n)
+void split_Divisor_2(int arr_A[], int arr_B[], int arr_C[], int n)
 {
-    int i = 0, swaper;
-    while (i < n)
+    int i_A = 0, i_B = 0, i_C = 0;
+    while (i_A < n)
     {
-        while (arr[i] > arr[i + 1])
+        if (arr_A[i_A] % 2 != 0)
         {
-            swaper = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = swaper;
-            if (i != 0)
-                i--;
-            // arrayOut(arr,n);
-            // Uncomment dòng 42 và chạy để thấy cách thuật toán sắp xếp hoạt động, đây là thuật toán "Bubble Sort"... hoặc tôi nhầm nó với thứ khác, hoặc nó chưa phải tối ưu
+            arr_B[i_B] = arr_A[i_A];
+            i_B++;
         }
-        i++;
+        else
+        {
+            arr_C[i_C] = arr_A[i_A];
+            i_C++;
+        }
+
+        i_A++;
     }
+    return;
 }
 
 int main(int argc, char const *argv[])
 {
-    int arr[MAX], n;
-    arrayMake(arr,n);
-    sortA(arr,n);
-    arrayOut(arr,n);
+    int arr_A[MAX], arr_B[MAX], arr_C[MAX], n;
+    arrayMake(arr_A, n);
+    printf("XUAT MANG A: \n");
+    arrayOut(arr_A, n);
+    printf("XUAT MANG B(so le): \n");
+    arrayOut(arr_B, n);
+    printf("XUAT MANG C(so chan): \n");
+    arrayOut(arr_C, n);
     return 0;
 }
+
